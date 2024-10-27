@@ -1,0 +1,171 @@
+#wrap {
+  margin: 0 auto;
+}
+
+/* header css */
+#header {
+  position: relative;
+  width: 1920px;
+  background-color: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #E2E8F0;
+}
+.inner {
+  height: 60px;
+}
+
+#header h1 {
+  position: absolute;
+  top: 10px;
+  left: 360px;
+}
+
+/* header end =========================================================== */
+
+/* container, content */
+#container {
+  height: 100vh;
+  padding: 20px;
+}
+#content {}
+
+/* main - todoSearchBox */
+.main {
+  position: relative;
+  background-color: #f1f5f9;
+}
+.todoSearchBox .search {
+  position: absolute;
+  top: 84px;
+  left: 360px;
+  width: 1016px;
+  height: 56px;
+  border: 2px solid #0F172A;
+  border-radius: 24px;
+  background-color: #F1F5F9;
+  box-shadow: 3px 4px 5px #0F172A;
+}
+.todoSearchBox .search::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18.16px;
+  text-align: center;
+  color: #64748b;
+}
+.todoSearchBox .addBtn {
+  position: absolute;
+  top: 84px;
+  left: 1392px;
+  
+  border: 2px solid #0F172A;
+  margin-left: 8px;
+  width: 168px;
+  height: 56px;
+  border-radius: 24px;
+  background-color: #E2E8F0;
+  box-shadow: 3px 4px 5px #0F172A;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.todoSearchBox .addBtn:hover {
+  background-color: #0f172a;
+  color: #fff;
+}
+
+/* todoSearchBox end =========================================================== */
+
+/* main - tableWrap */
+.tableWrap {
+  /* margin-top: 30px; */
+}
+.tableWrap .todoImg {
+  position: absolute;
+  top: 180px;
+  left: 360px;
+  border-radius: 23px;
+  width: 97px;
+  height: 36px;
+}
+.tableWrap .doneImg {
+  position: absolute;
+  top: 180px;
+  left: 972px;
+  border-radius: 23px;
+  width: 97px;
+  height: 36px;
+}
+
+.checkRadio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #0F172A;
+  background-color: #FEFCE8;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.checkRadio:checked {
+  background-color: #7C3AED;
+  border-radius: 50%;
+  position: relative;
+}
+.checkRadio:checked::before {
+  content: '✔';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+}
+
+/* main - todoTable */
+.todoTable  {
+  position: absolute;
+  top: 232px;
+  left: 360px;
+
+  width: 558px;
+  height: 182px;
+  float: left;
+}
+
+.todoTable .checkList {
+  width: 558px;
+  height: 50px;
+  border: 2px solid #0F172A;
+  border-radius: 27px;
+  display: flex;
+  align-items: center;
+}
+
+.checkList:nth-child(2), .checkList:nth-child(3) {
+  margin-top: 10px;
+}
+
+/* todoTable end =========================================================== */
+
+/* main - doneTable */
+.doneTable {
+  position: absolute;
+  top: 230px;
+  left: 972px;
+
+  width: 558px;
+  height: 182px;
+  float: right;
+}
+
+.doneTable .checkList {
+  width: 558px;
+  height: 50px;
+  border: 2px solid #0F172A;
+  border-radius: 27px;
+  display: flex;
+  align-items: center;
+}
+
+/* doneTable end =========================================================== */
