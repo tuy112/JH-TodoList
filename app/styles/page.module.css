@@ -144,7 +144,7 @@
   z-index: 1000;
 }
 
-.checkList:nth-child(2), .checkList:nth-child(3) {
+.todoTable .checkList:nth-child(2), .todoTable .checkList:nth-child(3) {
   margin-top: 10px;
 }
 
@@ -168,6 +168,10 @@
   border-radius: 27px;
   display: flex;
   align-items: center;
+}
+
+.doneTable .checkList:nth-child(2) {
+  margin-top: 10px;
 }
 
 /* doneTable end =========================================================== */
