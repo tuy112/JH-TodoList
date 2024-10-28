@@ -148,7 +148,7 @@
   margin-bottom: 10px;
 }
 
-.todoTable .checkList:nth-child(3) {
+.todoTable .checkList:last-child {
   margin-bottom: 0;
 }
 
@@ -215,16 +215,15 @@
   .todoTable  {
     top: 232px;
     left: 24px;
-  
     width: 669px;
     height: 182px;
   }
   .doneTable {
     top: 514px;
     left: 24px;
-  
     width: 696px;
     height: 182px;
+    margin-top: 20px;
   }
   .todoTable .checkList, .doneTable .checkList {
     width: 696px;

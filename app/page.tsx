@@ -1,30 +1,29 @@
 "use client";
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from "./styles/page.module.css";
 
 export default function Home() {
     const [buttonValue, setButtonValue] = useState("+ 추가하기");
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState<string[]>([]); // 데이터타입 : String
+    const [newTodo, setNewTodo] = useState("");
     const [tenantId] = useState("");
 
-    // 1. 할 일 목록
-    useEffect(() => {
-      const fetchTodos = async () => {
-        const response = await fetch(`https://assignment-todolist-api.vercel.app/api/${tenantId}/items`);
-          const data = await response.json();
-          setTodos(data);
-          console.log("data" + data);
-      };
-      fetchTodos();
-    }, [tenantId]);
+    // 1. 할 일 목록 GET
+    
 
-    // 2. 할 일 추가
-
+    // 2. 할 일 추가 POST
+    const addTodo = () => {
+      if (newTodo.trim()) {
+        setTodos([...todos, newTodo]); // 문자열
+        setNewTodo("");
+      }
+    };
 
     // 3. 할 일 입력 핸들러
-
+    const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNewTodo(e.target.value);
+    };
   
     // 4. 화면 줄이기
     useEffect(() => {
@@ -65,13 +64,34 @@ export default function Home() {
         <main id={styles.container} className={styles.main}>
           <section id={styles.content}>
             <div className={styles.todoSearchBox}>
-              <input type="text" className={styles.search} placeholder="할 일을 입력해주세요" />
-              <input type="button" className={styles.addBtn} value={buttonValue} />
+              <input 
+                type="text" 
+                className={styles.search} 
+                placeholder="할 일을 입력해주세요" 
+                value={newTodo}
+                onChange={inputChange}
+              />
+              <input 
+                type="button" 
+                className={styles.addBtn}
+                value={buttonValue}
+                onClick={addTodo}
+              />
             </div>
 
             <div className={styles.tableWrap}>
               <img className={styles.todoImg} src="/images/todo.png" alt="todo" />
               <ul className={styles.todoTable}>
+                {/* 할 일 추가 li */}
+                {todos.map((todo, index) => (
+                  <li key={index} className={styles.checkList}>
+                    <input type="checkbox" className={styles.checkRadio} />
+                    <Link href="/sub">
+                      <label className={styles.checkBoxLabel}>{todo}</label>
+                    </Link>
+                  </li>
+                ))}
+
                 <li className={styles.checkList}>
                   <input type="checkbox" className={styles.checkRadio} />
                   <Link href="/sub">
