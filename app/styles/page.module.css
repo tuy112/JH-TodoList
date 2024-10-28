@@ -106,11 +106,13 @@
   vertical-align: middle;
   margin-right: 10px;
   margin-left: 10px;
+  z-index: 10000;
 }
 .checkRadio:checked {
   background-color: #7C3AED;
   border-radius: 50%;
   position: relative;
+  z-index: 10000;
 }
 .checkRadio:checked::before {
   content: '✔';
@@ -141,7 +143,6 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  z-index: 1000;
 }
 
 .todoTable .checkList:nth-child(2), .todoTable .checkList:nth-child(3) {
@@ -160,7 +161,6 @@
   height: 182px;
   float: right;
 }
-
 .doneTable .checkList {
   width: 558px;
   height: 50px;
@@ -168,8 +168,8 @@
   border-radius: 27px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
-
 .doneTable .checkList:nth-child(2) {
   margin-top: 10px;
 }
