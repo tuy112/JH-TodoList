@@ -123,6 +123,9 @@
   color: #fff;
   font-size: 20px;
 }
+.checkBoxLabel {
+  cursor: pointer;
+}
 
 /* main - todoTable */
 .todoTable  {
@@ -142,7 +145,6 @@
   border-radius: 27px;
   display: flex;
   align-items: center;
-  cursor: pointer;
   margin-bottom: 10px;
 }
 

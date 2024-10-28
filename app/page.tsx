@@ -72,43 +72,43 @@ export default function Home() {
             <div className={styles.tableWrap}>
               <img className={styles.todoImg} src="/images/todo.png" alt="todo" />
               <ul className={styles.todoTable}>
-                <Link href="/sub">
-                  <li className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} />
+                <li className={styles.checkList}>
+                  <input type="checkbox" className={styles.checkRadio} />
+                  <Link href="/sub">
                     <label className={styles.checkBoxLabel}>비타민 챙겨먹기</label>
-                  </li>
-                </Link>
-                
-                <Link href="/sub">
-                  <li className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} />
-                    <label className={styles.checkBoxLabel}>맥주 마시기</label>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
 
-                <Link href="/sub">
-                  <li className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} />
+                <li className={styles.checkList}>
+                  <input type="checkbox" className={styles.checkRadio} />
+                  <Link href="/sub">
+                    <label className={styles.checkBoxLabel}>맥주 마시기</label>
+                  </Link>
+                </li>
+
+                <li className={styles.checkList}>
+                  <input type="checkbox" className={styles.checkRadio} />
+                  <Link href="/sub">
                     <label className={styles.checkBoxLabel}>운동하기</label>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
               </ul>
 
               <img className={styles.doneImg} src="/images/done.png" alt="todo" />
               <ul className={styles.doneTable}>
-                <Link href="/sub">
-                  <li className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} checked />
+                <li className={styles.checkList}>
+                  <input type="checkbox" className={styles.checkRadio} checked />
+                  <Link href="/sub">
                     <label className={styles.checkBoxLabel}>은행 다녀오기</label>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
 
-                <Link href="/sub">
-                  <li className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} checked />
+                <li className={styles.checkList}>
+                  <input type="checkbox" className={styles.checkRadio} checked />
+                  <Link href="/sub">
                     <label className={styles.checkBoxLabel}>비타민 먹기</label>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
               </ul>
             </div>
           </section>
