@@ -9,4 +9,4 @@
 2. API GET, POST 완료
 3. Thunder Client 상으로만 API UD 가능
 4. todo 체크박스 클릭 시 done으로 넘어가는 기능 구현
-5. 상세페이지 이동
+5. 상세페이지 이동 -> 여기서 막혔습니다 ㅠ_ㅠ (id 별로 url이 뜨도록은 만들었는데 자꾸만 404 not found가 나오네요)

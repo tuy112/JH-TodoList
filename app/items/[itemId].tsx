@@ -17,7 +17,7 @@ export default function SubPage() {
   });
   const [newName, setNewName] = useState(item.name);
   const [newMemo, setNewMemo] = useState(item.memo);
-  const [newImage, setNewImage] = useState(null);
+//   const [newImage, setNewImage] = useState(null);
 
   useEffect(() => {
     if (itemId) {
@@ -35,9 +35,9 @@ export default function SubPage() {
     const formData = new FormData();
     formData.append('name', newName);
     formData.append('memo', newMemo);
-    if (newImage) {
-      formData.append('image', newImage);
-    }
+    // if (newImage) {
+    //   formData.append('image', newImage);
+    // }
 
     // 수정
     const response = await fetch(`/api/items/${itemId}`, {
