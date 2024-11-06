@@ -10,7 +10,6 @@ export default function Home() {
     const [dones, setDones] = useState<string[]>([]); // done
     const [newTodo, setNewTodo] = useState("");
     const tenantId = "jstol";
-    // const navigation = useNavigation();
 
     // Ajax 사용
     // 1. 할 일 목록 GET
@@ -60,24 +59,24 @@ export default function Home() {
       const updatedTodos = [...todos];
       const [movedTodo] = updatedTodos.splice(index, 1);
       setTodos(updatedTodos);
-      setDones((prevDones) => [...prevDones, movedTodo]);
+      setDones((prevDones) => [
+        ...prevDones,
+        { ...movedTodo, isCompleted: true },
+      ]);
     };
 
     // 4. 체크박스 체크 (완료 done -> 할일 todo)
-    const doneTodo = (index:number) => {
+    const doneTodo = (index: number) => {
       const updatedDones = [...dones];
-      const [movedDone] = updatedDones.splice(index, 1);
-      setDones(updatedDones);
-      setTodos((prevTodos) => [...prevTodos,
-         movedDone]);
+      const [movedDone] = updatedDones.splice(index, 1);  
+      setTodos((prevTodos) => [
+        ...prevTodos,
+        { ...movedDone, isCompleted: false },
+      ]);
     };
 
-    // 4. 할 일 입력 핸들러
-    const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setNewTodo(e.target.value);
-    };
 
-    // 서브페이지 이동 로직 (구현 실패ㅠ_ㅠ)
+    // 서브페이지 이동 로직
   
     // 5. 화면 줄이기
     useEffect(() => {
@@ -97,6 +96,7 @@ export default function Home() {
         window.removeEventListener('resize', handleResize);
       };
     }, []);
+    
 
   return (
     <div id={styles.wrap}>
@@ -145,7 +145,7 @@ export default function Home() {
                     className={styles.checkRadio}
                     onChange={() => checkTodo(index)}
                   />
-                  <Link href="/sub">
+                  <Link href={`/items/${todo.id}`}>
                     <label className={styles.checkBoxLabel}>
                       {todo.name}
                     </label>
@@ -161,9 +161,9 @@ export default function Home() {
               {Array.isArray(dones) && dones.map((done, index) => (
                 <li key={`done-${index}`} className={styles.checkList}>
                   <input type="checkbox" className={styles.checkRadio} checked onChange={() => doneTodo(index)} />
-                  <Link href="/sub">
+                  <Link href={`/items/${done.id}`}>
                     <label className={styles.checkBoxLabel}>
-                      {done}
+                      {done.name}
                     </label>
                   </Link>
                 </li>
