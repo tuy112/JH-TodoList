@@ -126,6 +126,9 @@
 .checkBoxLabel {
   cursor: pointer;
 }
+.doneTable .checkBoxLabel {
+  text-decoration: line-through;
+}
 
 /* main - todoTable */
 .todoTable  {
