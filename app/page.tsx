@@ -4,10 +4,16 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from "./styles/page.module.css";
 
+interface TodoItem {
+  id: number;
+  name: string;
+  isCompleted: boolean;
+}
+
 export default function Home() {
     const [buttonValue, setButtonValue] = useState("+ 추가하기");
-    const [todos, setTodos] = useState<string[]>([]); // todo
-    const [dones, setDones] = useState<string[]>([]); // done
+    const [todos, setTodos] = useState<TodoItem[]>([]); // todo
+    const [dones, setDones] = useState<TodoItem[]>([]); // done
     const [newTodo, setNewTodo] = useState("");
     const tenantId = "jstol";
 

@@ -66,16 +66,16 @@ export default function SubPage() {
   };
 
   // 이미지
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      if (file.size <= 5 * 1024 * 1024 && /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/.test(file.name)) {
-        setNewImage(file);
-      } else {
-        alert('이미지 파일 크기는 5MB 이하여야 하며, 파일명은 영어로만 구성되어야 합니다.');
-      }
-    }
-  };
+//   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     if (e.target.files) {
+//       const file = e.target.files[0];
+//       if (file.size <= 5 * 1024 * 1024 && /^[a-zA-Z0-9_-]+\.[a-zA-Z0-9]+$/.test(file.name)) {
+//         setNewImage(file);
+//       } else {
+//         alert('이미지 파일 크기는 5MB 이하여야 하며, 파일명은 영어로만 구성되어야 합니다.');
+//       }
+//     }
+//   };
 
   return (
     <div id={styles.wrap}>
@@ -116,7 +116,7 @@ export default function SubPage() {
               accept="image/*"
               className={styles.addPicBtn} 
               value={"+"} 
-              onChange={handleImageChange}
+            //   onChange={handleImageChange}
             />
           </div>
 
