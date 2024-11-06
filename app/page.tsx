@@ -5,8 +5,8 @@ import styles from "./styles/page.module.css";
 
 export default function Home() {
     const [buttonValue, setButtonValue] = useState("+ 추가하기");
-    const [todos, setTodos] = useState<string[]>([]); // todo
-    const [dones, setDones] = useState<string[]>([]); // done
+    const [todos, setTodos] = useState<string[]>(["비타민 챙겨먹기", "맥주 마시기", "운동하기"]); // todo
+    const [dones, setDones] = useState<string[]>(["은행 다녀오기", "비타민 먹기"]); // done
     const [newTodo, setNewTodo] = useState("");
     // const [tenantId] = useState("");
 
@@ -38,8 +38,8 @@ export default function Home() {
           xhr.onload = function () {
               if (xhr.status >= 200 && xhr.status < 300) {
                   const data = JSON.parse(xhr.responseText);
-                  setTodos([...todos, data.todo]); // 응답 데이터에서 새 할 일 추가
-                  setNewTodo(""); // 입력 필드 초기화
+                  setTodos([...todos, data.todo]);
+                  setNewTodo("");
               } else {
                   console.error('Error adding todo:', xhr.statusText);
               }
@@ -49,23 +49,32 @@ export default function Home() {
           };
           
           const requestBody = JSON.stringify({ todo: newTodo });
-          xhr.send(requestBody); // JSON 형식으로 할 일 전송
+          xhr.send(requestBody);
       }
   };
 
-    // 2. 체크박스 체크 (할일->완료)
+    // 3. 체크박스 체크 (할일 todo -> 완료 done)
     const checkTodo = (index: number) => {
-      const todoToMove = todos[index];
-      setDones([...dones, todoToMove]);
-      setTodos(todos.filter((_, i) => i !== index));
+      const updatedTodos = [...todos];
+      const [movedTodo] = updatedTodos.splice(index, 1);
+      setTodos(updatedTodos);
+      setDones((prevDones) => [...prevDones, movedTodo]);
     };
 
-    // 3. 할 일 입력 핸들러
+    // 4. 체크박스 체크 (완료 done -> 할일 todo)
+    const doneTodo = (index:number) => {
+      const updatedDones = [...dones];
+      const [movedDone] = updatedDones.splice(index, 1);
+      setDones(updatedDones);
+      setTodos((prevTodos) => [...prevTodos, movedDone]);
+    };
+
+    // 4. 할 일 입력 핸들러
     const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setNewTodo(e.target.value);
     };
   
-    // 4. 화면 줄이기
+    // 5. 화면 줄이기
     useEffect(() => {
       const handleResize = () => {
         const width = window.innerWidth;
@@ -125,34 +134,13 @@ export default function Home() {
               <ul className={styles.todoTable}>
                 {/* 할 일 추가 li */}
                 {todos.map((todo, index) => (
-                  <li key={index} className={styles.checkList}>
+                  <li key={`todo-${index}`} className={styles.checkList}>
                     <input type="checkbox" className={styles.checkRadio} onChange={() => checkTodo(index)} />
                     <Link href="/sub">
                       <label className={styles.checkBoxLabel}>{todo}</label>
                     </Link>
                   </li>
                 ))}
-
-                <li className={styles.checkList}>
-                  <input type="checkbox" className={styles.checkRadio} />
-                  <Link href="/sub">
-                    <label className={styles.checkBoxLabel}>비타민 챙겨먹기</label>
-                  </Link>
-                </li>
-
-                <li className={styles.checkList}>
-                  <input type="checkbox" className={styles.checkRadio} />
-                  <Link href="/sub">
-                    <label className={styles.checkBoxLabel}>맥주 마시기</label>
-                  </Link>
-                </li>
-
-                <li className={styles.checkList}>
-                  <input type="checkbox" className={styles.checkRadio} />
-                  <Link href="/sub">
-                    <label className={styles.checkBoxLabel}>운동하기</label>
-                  </Link>
-                </li>
               </ul>
 
               {/* doneTable */}
@@ -160,27 +148,13 @@ export default function Home() {
               <ul className={styles.doneTable}>
                 {/* 완료 목록 li */}
                 {dones.map((done, index) => (
-                  <li key={index} className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} checked readOnly />
+                  <li key={`done-${index}`} className={styles.checkList}>
+                    <input type="checkbox" className={styles.checkRadio} checked onChange={() => doneTodo(index)} />
                     <Link href="/sub">
                       <label className={styles.checkBoxLabel}>{done}</label>
                     </Link>
                   </li>
                 ))}
-
-                <li className={styles.checkList}>
-                  <input type="checkbox" className={styles.checkRadio} checked />
-                  <Link href="/sub">
-                    <label className={styles.checkBoxLabel}>은행 다녀오기</label>
-                  </Link>
-                </li>
-
-                <li className={styles.checkList}>
-                  <input type="checkbox" className={styles.checkRadio} checked />
-                  <Link href="/sub">
-                    <label className={styles.checkBoxLabel}>비타민 먹기</label>
-                  </Link>
-                </li>
               </ul>
             </div>
           </section>
