@@ -20,8 +20,8 @@ export default function Home() {
       xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
           const data = JSON.parse(xhr.responseText);
-          setTodos(data.todos);
-          console.log("할 일 목록 불러오기 성공:", data.todos);
+          console.log("API 응답 데이터:", data);
+          setTodos(data);
         } else {
           console.log("할 일 목록 불러오기 실패:", xhr.statusText);
         }
@@ -47,11 +47,9 @@ export default function Home() {
           }
         };
     
-        xhr.onerror = function () {
-          console.error("요청 실패");
-        };
-    
-        const requestBody = JSON.stringify({ item: { content: newTodo } });
+        const requestBody = JSON.stringify({
+          name: newTodo
+        });
         xhr.send(requestBody);
         console.log("보내는 요청 본문:", requestBody);
       }
@@ -70,7 +68,8 @@ export default function Home() {
       const updatedDones = [...dones];
       const [movedDone] = updatedDones.splice(index, 1);
       setDones(updatedDones);
-      setTodos((prevTodos) => [...prevTodos, movedDone]);
+      setTodos((prevTodos) => [...prevTodos,
+         movedDone]);
     };
 
     // 4. 할 일 입력 핸들러
@@ -140,14 +139,18 @@ export default function Home() {
               <ul className={styles.todoTable}>
                 {/* 할 일 추가 li */}
                 {Array.isArray(todos) && todos.map((todo, index) => (
-                  <li key={`todo-${index}`} className={styles.checkList}>
-                    <input type="checkbox" className={styles.checkRadio} onChange={() => checkTodo(index)} />
-                    <Link href="/sub">
-                      <label className={styles.checkBoxLabel}>
-                        {todo}
-                      </label>
-                    </Link>
-                  </li>
+                <li key={`todo-${index}`} className={styles.checkList}>
+                  <input
+                    type="checkbox"
+                    className={styles.checkRadio}
+                    onChange={() => checkTodo(index)}
+                  />
+                  <Link href="/sub">
+                    <label className={styles.checkBoxLabel}>
+                      {todo.name}
+                    </label>
+                  </Link>
+                </li>
                 ))}
               </ul>
 
