@@ -1,12 +1,8 @@
 ## 나만의 TodoList
 
-#### 사용 언어 : Next.js ( TypeScript ) 
+#### 사용 언어 : 프론트 React.js + 백 Java
 
-##### 1 - 프로젝트 설명 : jh-todolist-next ( tenantId : jstol )
+##### 1 - 프로젝트 설명 : Jstory 안에 있는 TodoList 수정 작업
 
 ##### 2 - 구현 완료한 것 + 미구현
-1. 웹 퍼블리싱 (반응형 적용) 완료
-2. API GET, POST 완료
-3. Thunder Client 상으로만 API UD 가능
-4. todo 체크박스 클릭 시 done으로 넘어가는 기능 구현
-5. 상세페이지 이동 -> 여기서 막혔습니다 ㅠ_ㅠ (id 별로 url이 뜨도록은 만들었는데 자꾸만 404 not found가 나오네요)
+
