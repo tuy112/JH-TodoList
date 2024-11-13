@@ -20,6 +20,17 @@
   left: 360px;
 }
 
+#header .logoBox {
+  background-color: #FEFCE8;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#header .logoBox p {
+  font-weight: 600;
+  color: #333;
+}
+
 /* header end =========================================================== */
 
 /* container, content */
@@ -257,7 +268,7 @@
     top: 9.71px;
   }
   .headerLogo {
-    content: url('/images/mobileLogo.png');
+    content: url('../images/mobileLogo.png');
     width: 71px;
     height: 40px;
   }

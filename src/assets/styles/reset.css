@@ -1,8 +1,10 @@
+/* 기본 색상 설정 */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* 다크 모드 색상 */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -10,45 +12,60 @@
   }
 }
 
+/* 폰트 설정 */
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('../fonts/NanumSquareB.woff') format('woff');
+  font-weight: 100 900;
+}
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: 'NanumSquare', sans-serif;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'NanumSquare', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 기본 스타일 초기화 */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-a, .btn {
+a,
+.btn {
   color: inherit;
   text-decoration: none;
 }
 
-ol, ul , li {
-	list-style: none;
+ol,
+ul,
+li {
+  list-style: none;
 }
 
+/* 숨김 요소 */
 .hide {
-	position: absolute;
-	left: 0; top: 0;
-	width: 0; height: 0;
-	text-indent: -9999em;
-	overflow: hidden;
-	visibility: hidden;
-	line-height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  text-indent: -9999em;
+  overflow: hidden;
+  visibility: hidden;
+  line-height: 0;
 }
 
+/* 다크 모드 설정 */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
